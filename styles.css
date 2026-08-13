@@ -661,6 +661,26 @@ html, body {
   margin: 0 auto;
 }
 
+/* ===== Fullscreen presentation mode (~150%) ===== */
+#section-slide:fullscreen {
+  max-width: none;
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  padding: 32px;
+  background: var(--bg-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+}
+
+#section-slide:fullscreen .slide-deck-wrapper {
+  zoom: 1.5;
+  max-width: 1120px;
+  margin: auto;
+}
+
 .slide-controls-top {
   display: flex;
   justify-content: space-between;
@@ -780,16 +800,39 @@ html, body {
 
 .slide-page {
   display: none;
-  animation: fadeInSlide 0.35s ease forwards;
 }
 
 .slide-page.active {
   display: block;
 }
 
+/* Direction-aware slide transitions */
+.slide-page.active.anim-next {
+  animation: slideInNext 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.slide-page.active.anim-prev {
+  animation: slideInPrev 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes slideInNext {
+  from { opacity: 0; transform: translateX(60px) scale(0.98); }
+  to   { opacity: 1; transform: translateX(0) scale(1); }
+}
+@keyframes slideInPrev {
+  from { opacity: 0; transform: translateX(-60px) scale(0.98); }
+  to   { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide-page.active.anim-next,
+  .slide-page.active.anim-prev {
+    animation: fadeInSlide 0.25s ease both;
+  }
+}
+
 @keyframes fadeInSlide {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 .slide-title {

@@ -120,6 +120,9 @@ function initSlidePresentation() {
   function goToSlide(slideNum) {
     if (slideNum < 1 || slideNum > totalSlides) return;
 
+    // Determine transition direction before updating currentSlide
+    const direction = slideNum >= currentSlide ? 'anim-next' : 'anim-prev';
+
     currentSlide = slideNum;
     const formattedNum = String(currentSlide).padStart(2, '0');
 
@@ -127,12 +130,14 @@ function initSlidePresentation() {
     if (currentSlideNumEl) currentSlideNumEl.textContent = formattedNum;
     if (slideAccentNumEl) slideAccentNumEl.textContent = formattedNum;
 
-    // Toggle Active Slide Page
+    // Toggle Active Slide Page (with direction-aware animation)
     slidePages.forEach(page => {
       if (parseInt(page.dataset.slide) === currentSlide) {
-        page.classList.add('active');
+        page.classList.remove('anim-next', 'anim-prev');
+        void page.offsetWidth; // force reflow so the animation restarts
+        page.classList.add('active', direction);
       } else {
-        page.classList.remove('active');
+        page.classList.remove('active', 'anim-next', 'anim-prev');
       }
     });
 
@@ -140,6 +145,17 @@ function initSlidePresentation() {
     thumbBtns.forEach(btn => {
       if (parseInt(btn.dataset.slide) === currentSlide) {
         btn.classList.add('active');
+        // Auto-scroll the thumbnail bar so the active item is centered
+        const bar = btn.parentElement;
+        if (bar) {
+          const barRect = bar.getBoundingClientRect();
+          const btnRect = btn.getBoundingClientRect();
+          const maxScroll = bar.scrollWidth - bar.clientWidth;
+          let target = bar.scrollLeft + (btnRect.left - barRect.left)
+            - (bar.clientWidth / 2) + (btnRect.width / 2);
+          target = Math.max(0, Math.min(target, maxScroll));
+          bar.scrollLeft = target;
+        }
       } else {
         btn.classList.remove('active');
       }
@@ -164,15 +180,45 @@ function initSlidePresentation() {
     });
   });
 
-  // Keyboard Left / Right Navigation for Slides
+  // Fullscreen presentation mode
+  const slideSectionEl = document.getElementById('section-slide');
+  const fullscreenBtn = document.getElementById('fullscreenSlideBtn');
+
+  function toggleFullscreen() {
+    if (!slideSectionEl) return;
+    if (!document.fullscreenElement) {
+      (slideSectionEl.requestFullscreen || slideSectionEl.webkitRequestFullscreen)
+        .call(slideSectionEl);
+    } else {
+      (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+    }
+  }
+
+  if (fullscreenBtn) {
+    fullscreenBtn.addEventListener('click', toggleFullscreen);
+  }
+
+  document.addEventListener('fullscreenchange', () => {
+    if (!fullscreenBtn) return;
+    const active = !!document.fullscreenElement;
+    const icon = fullscreenBtn.querySelector('i');
+    const label = fullscreenBtn.querySelector('.fs-label');
+    if (icon) icon.className = active ? 'fa-solid fa-compress' : 'fa-solid fa-expand';
+    if (label) label.textContent = active ? 'Thoát' : 'Toàn màn hình';
+  });
+
+  // Keyboard Navigation for Slides (Left / Right / F)
   document.addEventListener('keydown', (e) => {
     const slideSection = document.getElementById('section-slide');
-    if (!slideSection || !slideSection.classList.contains('active')) return;
+    const isActive = slideSection && slideSection.classList.contains('active');
+    if (!isActive && !document.fullscreenElement) return;
 
     if (e.key === 'ArrowLeft') {
       if (currentSlide > 1) goToSlide(currentSlide - 1);
     } else if (e.key === 'ArrowRight') {
       if (currentSlide < totalSlides) goToSlide(currentSlide + 1);
+    } else if (e.key === 'f' || e.key === 'F') {
+      toggleFullscreen();
     }
   });
 }
