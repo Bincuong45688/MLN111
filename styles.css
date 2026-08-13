@@ -2274,3 +2274,519 @@ body * {
   font-size: 0.75rem;
 }
 
+/* ===========================================================================
+   RESPONSIVE LAYOUT REFINEMENTS
+   ========================================================================== */
+img,
+video {
+  max-width: 100%;
+}
+
+video {
+  display: block;
+  height: auto;
+}
+
+@media (max-width: 1100px) {
+  .app-section {
+    padding-inline: 20px;
+  }
+
+  .top-nav-container {
+    width: min(760px, calc(100vw - 180px));
+  }
+
+  .top-nav {
+    justify-content: center;
+  }
+
+  .nav-tab {
+    padding-inline: clamp(12px, 1.8vw, 20px);
+  }
+
+  .hero-container {
+    gap: 28px;
+    padding-inline: 0;
+  }
+
+  .slide-body {
+    padding: 28px;
+  }
+
+  .slide-controls-top {
+    gap: 14px;
+  }
+
+  .slide-nav-buttons {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .slide-btn {
+    padding-inline: 14px;
+  }
+
+  .footer-info {
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+}
+
+@media (max-width: 900px) {
+  .app-viewport {
+    padding-top: 92px;
+  }
+
+  .app-section {
+    padding-bottom: 44px;
+  }
+
+  .hero-container {
+    min-height: auto;
+    padding-block: 24px;
+  }
+
+  .hero-description {
+    margin-inline: auto;
+  }
+
+  .hero-illustration {
+    min-height: 260px;
+  }
+
+  .slide-card-container {
+    min-height: 0;
+  }
+
+  .slide-controls-top {
+    align-items: flex-start;
+  }
+
+  .slide-body {
+    padding: 24px;
+  }
+
+  .slide-summary-bar,
+  .video-header,
+  .topic-row {
+    flex-wrap: wrap;
+  }
+
+  .loto-stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .mario-home-screen,
+  .mario-quiz-panel,
+  .ai-card {
+    padding: 24px;
+  }
+
+  .mario-stage {
+    height: 240px;
+  }
+
+  .assignment-table,
+  .mario-rank-box table,
+  .mario-end-rank table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .presentation-overlay {
+    min-height: 100dvh;
+  }
+
+  .pres-hud {
+    padding: 12px 20px;
+  }
+
+  .pres-content {
+    padding: 16px 20px;
+  }
+
+  .pres-slide-card {
+    padding: 32px 36px;
+  }
+
+  #section-slide:fullscreen {
+    padding: 16px;
+  }
+
+  #section-slide:fullscreen .slide-deck-wrapper {
+    zoom: 1;
+  }
+}
+
+@media (max-width: 640px) {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  .sidebar-toggle-btn {
+    top: 12px;
+    left: 12px;
+    width: 42px;
+    height: 42px;
+    justify-content: center;
+    padding: 0;
+  }
+
+  #sidebarToggleText {
+    display: none;
+  }
+
+  .top-nav-container {
+    top: 12px;
+    left: 64px;
+    right: 12px;
+    width: auto;
+    transform: none;
+  }
+
+  .top-nav {
+    justify-content: flex-start;
+    max-width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+  }
+
+  .top-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-tab {
+    flex: 0 0 auto;
+    padding: 9px 13px;
+    font-size: 0.72rem;
+  }
+
+  .toc-sidebar {
+    width: min(86vw, 320px);
+    padding: 28px 20px;
+  }
+
+  .app-viewport {
+    padding-top: 76px;
+  }
+
+  .app-section {
+    padding: 14px 12px 32px;
+  }
+
+  .hero-container {
+    gap: 18px;
+    padding-top: 12px;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 10vw, 2.8rem);
+  }
+
+  .hero-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+  }
+
+  .hero-description {
+    font-size: 0.98rem;
+    margin-bottom: 24px;
+  }
+
+  .hero-actions,
+  .slide-nav-buttons,
+  .mario-actions {
+    width: 100%;
+  }
+
+  .hero-actions .btn,
+  .slide-nav-buttons .slide-btn,
+  .mario-actions > * {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+
+  .hero-illustration {
+    min-height: 210px;
+  }
+
+  .hero-card-preview {
+    max-width: min(88%, 320px);
+    padding: 24px 20px;
+  }
+
+  .hero-footer {
+    margin-top: 20px;
+    padding: 18px 0 0;
+  }
+
+  .footer-info {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+    text-align: left;
+  }
+
+  .footer-info .divider {
+    display: none;
+  }
+
+  .slide-deck-wrapper {
+    gap: 14px;
+  }
+
+  .slide-controls-top {
+    flex-direction: column;
+  }
+
+  .slide-indicator,
+  .slide-nav-buttons {
+    width: 100%;
+  }
+
+  .slide-nav-buttons {
+    gap: 8px;
+  }
+
+  .slide-btn {
+    min-height: 42px;
+    padding: 9px 12px;
+    font-size: 0.78rem;
+  }
+
+  .slide-body,
+  .mario-home-screen,
+  .mario-quiz-panel,
+  .ai-card,
+  .loto-card-stage {
+    padding: 18px;
+  }
+
+  .slide-title,
+  .loto-header h1,
+  .mario-home-screen h1,
+  .ai-header h1 {
+    font-size: clamp(1.7rem, 8vw, 2.2rem);
+  }
+
+  .slide-section-title {
+    font-size: 1.08rem;
+    align-items: flex-start;
+  }
+
+  .slide-list,
+  .slide-boxes-stack {
+    gap: 10px;
+  }
+
+  .slide-list li,
+  .concept-box,
+  .info-card,
+  .mindmap-box,
+  .transition-question-card,
+  .big-statement-card {
+    padding: 16px;
+  }
+
+  .flow-steps-container {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .flow-steps-container .fa-arrow-right,
+  .flow-steps-container .fa-arrow-down {
+    align-self: center;
+    transform: rotate(90deg);
+  }
+
+  .video-card {
+    padding: 12px;
+  }
+
+  .video-header h4 {
+    font-size: 0.9rem;
+  }
+
+  .video-tag {
+    font-size: 0.68rem;
+  }
+
+  .loto-header p,
+  .mario-home-screen p,
+  .ai-header p {
+    margin-bottom: 20px;
+  }
+
+  .loto-stats {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .stat-box {
+    padding: 12px;
+  }
+
+  .loto-opt-btn {
+    min-height: 120px;
+  }
+
+  .mario-player-box {
+    max-width: none;
+  }
+
+  .mario-start-btn {
+    width: 100%;
+    margin-bottom: 22px;
+    padding-inline: 20px;
+  }
+
+  .mario-stage {
+    height: 210px;
+    border-radius: 16px;
+  }
+
+  .mario-hud {
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    gap: 8px;
+    padding: 8px 10px;
+    font-size: 0.72rem;
+  }
+
+  .hud-label {
+    font-size: 0.62rem;
+  }
+
+  .mario,
+  .princess {
+    width: 40px;
+    height: 40px;
+    bottom: 34px;
+  }
+
+  .princess {
+    right: 20px;
+  }
+
+  .ground {
+    height: 34px;
+  }
+
+  .topic-row {
+    gap: 6px;
+  }
+
+  .topic-row span {
+    font-size: 0.68rem;
+  }
+
+  #question {
+    font-size: 1.1rem;
+  }
+
+  .answers button {
+    padding: 12px 14px;
+    font-size: 0.92rem;
+  }
+
+  .ai-feature-list {
+    gap: 14px;
+  }
+
+  .ai-feature-list li {
+    gap: 12px;
+  }
+
+  .ai-icon {
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+  }
+
+  .pres-hud {
+    padding: 10px 12px;
+  }
+
+  .pres-hud-left,
+  .pres-hud-right {
+    gap: 8px;
+  }
+
+  .pres-title-text,
+  .pres-hint {
+    display: none;
+  }
+
+  .pres-badge {
+    padding: 5px 8px;
+    font-size: 0.66rem;
+  }
+
+  .pres-counter {
+    font-size: 0.85rem;
+  }
+
+  .pres-exit-btn {
+    padding: 8px 10px;
+    font-size: 0.78rem;
+  }
+
+  .pres-content {
+    padding: 10px;
+  }
+
+  .pres-slide-card {
+    border-radius: 14px;
+    padding: 20px 16px;
+    justify-content: flex-start;
+  }
+
+  .pres-nav-bar {
+    gap: 14px;
+    padding: 10px 14px;
+  }
+
+  .pres-nav-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .pres-dot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .pres-dot.active {
+    width: 20px;
+  }
+
+  #section-slide:fullscreen {
+    padding: 0;
+  }
+}
+
+@media (max-width: 380px) {
+  .nav-tab {
+    padding-inline: 11px;
+    font-size: 0.68rem;
+  }
+
+  .hero-actions .btn,
+  .slide-nav-buttons .slide-btn {
+    font-size: 0.74rem;
+  }
+
+  .slide-badge {
+    margin-right: 6px;
+  }
+
+  .mario-hud {
+    font-size: 0.66rem;
+  }
+}
+

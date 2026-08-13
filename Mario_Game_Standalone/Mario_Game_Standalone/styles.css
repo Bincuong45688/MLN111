@@ -2304,3 +2304,218 @@ body.room-active .rank-panel td {
     min-height: 132px;
   }
 }
+
+@media (max-width: 640px) {
+  body.home-active {
+    overflow: auto;
+  }
+
+  .home-screen {
+    position: relative;
+    min-height: 100dvh;
+    padding: 12px;
+  }
+
+  .home-card {
+    width: 100%;
+    margin: 0;
+    border-width: 4px;
+    padding: 20px 16px;
+    box-shadow: 0 10px 0 rgba(23, 32, 51, 0.2), 0 20px 48px rgba(23, 32, 51, 0.2);
+  }
+
+  .home-badge {
+    border-width: 3px;
+    padding: 5px 10px;
+    font-size: 0.78rem;
+  }
+
+  .home-card h1 {
+    margin: 14px 0 10px;
+    font-size: clamp(2rem, 12vw, 3.2rem);
+    line-height: 1;
+  }
+
+  .home-card p {
+    margin-bottom: 18px;
+    font-size: 0.92rem;
+  }
+
+  .player-field {
+    margin-bottom: 14px;
+  }
+
+  .start-button {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 1rem;
+  }
+
+  .home-rank,
+  .rank-panel {
+    margin-top: 18px;
+    border-width: 3px;
+  }
+
+  .home-rank h2,
+  .rank-panel h3 {
+    font-size: 0.9rem;
+  }
+
+  .home-rank th,
+  .home-rank td,
+  .rank-panel th,
+  .rank-panel td {
+    padding: 8px 6px;
+    font-size: 0.8rem;
+  }
+
+  .game-shell,
+  .stage {
+    min-height: 100dvh;
+  }
+
+  .stage {
+    overflow: hidden;
+  }
+
+  .hud {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+    padding: 10px;
+  }
+
+  .hud > div {
+    border-width: 3px;
+    padding: 8px;
+  }
+
+  .hud-label {
+    font-size: 0.62rem;
+  }
+
+  .hud strong {
+    margin-top: 3px;
+    font-size: 0.95rem;
+  }
+
+  .level-track {
+    min-height: 300px;
+    height: 52vh;
+  }
+
+  .stage.in-room .level-track {
+    min-height: 100dvh;
+    height: 100dvh;
+  }
+
+  .stage.in-room {
+    border-width: 4px;
+  }
+
+  body.room-active .quiz-panel {
+    top: auto;
+    bottom: 14px;
+    left: 12px;
+    right: 12px;
+    width: auto;
+    max-height: min(56dvh, 520px);
+    padding: 14px;
+    border-width: 3px;
+    transform: none;
+  }
+
+  .stage.in-room .room-status {
+    left: 12px;
+    right: 12px;
+    top: 12px;
+    gap: 8px;
+    padding: 7px 10px;
+    font-size: 0.75rem;
+  }
+
+  .room-scene {
+    inset: 3% 0 0;
+  }
+
+  .scene-label {
+    max-width: calc(100% - 24px);
+    font-size: 0.64rem;
+  }
+
+  .stage.in-room .mario {
+    width: 72px;
+    height: 114px;
+    bottom: 5%;
+    left: 4% !important;
+  }
+
+  .princess {
+    width: 72px;
+    height: 104px;
+    bottom: 46px;
+  }
+
+  body.room-active h2 {
+    min-height: 0;
+    font-size: 1rem;
+  }
+
+  .topic-row {
+    gap: 5px;
+    margin-bottom: 10px;
+  }
+
+  .topic-row span {
+    border-width: 2px;
+    padding: 4px 7px;
+    font-size: 0.68rem;
+  }
+
+  .answer {
+    min-height: 44px;
+    border-width: 3px;
+    padding: 10px;
+    font-size: 0.88rem;
+  }
+
+  .feedback {
+    min-height: 0;
+    margin: 10px 0;
+    font-size: 0.84rem;
+  }
+
+  .actions {
+    gap: 8px;
+  }
+
+  .primary,
+  .secondary {
+    flex: 1 1 100%;
+    min-width: 0;
+    border-width: 3px;
+    padding: 10px 12px;
+  }
+}
+
+@media (max-width: 380px) {
+  .home-card {
+    padding: 16px 12px;
+  }
+
+  .home-card h1 {
+    font-size: 2rem;
+  }
+
+  .home-rank th,
+  .home-rank td {
+    font-size: 0.72rem;
+  }
+
+  body.room-active .quiz-panel {
+    bottom: 8px;
+    left: 8px;
+    right: 8px;
+    max-height: 60dvh;
+  }
+}
