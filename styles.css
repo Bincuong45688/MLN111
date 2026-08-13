@@ -1885,7 +1885,7 @@ html, body {
   .hero-actions { justify-content: center; }
   .slide-card-container { grid-template-columns: 1fr; }
   .slide-accent-strip { display: none; }
-  .grid-slide-image, .ai-grid, .video-grid { grid-template-columns: 1fr; }
+  .grid-slide-image, .ai-grid, .video-grid, .grid-2-cols { grid-template-columns: 1fr; }
   .loto-choices-grid { grid-template-columns: 1fr; }
   .mindmap-grid { grid-template-columns: 1fr; }
 }
