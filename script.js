@@ -563,6 +563,33 @@ const marioRooms = [
         explain: "Xã hội số tạo ra khoảng cách tiếp cận công nghệ và quyền kiểm soát dữ liệu tri thức."
       }
     ]
+  },
+  {
+    title: "Phòng 6: Vận dụng cách nhìn biện chứng",
+    questions: [
+      {
+        text: "Một sinh viên đi học trễ 20 phút. Sau khi biết thêm rằng hôm đó trời mưa lớn, xe buýt thay đổi lịch trình và bạn ấy đã xuất phát sớm, cách đánh giá nào phù hợp nhất với cách nhìn biện chứng?",
+        answers: [
+          "Không thể đánh giá hành vi đi trễ vì mọi nguyên nhân đều có thể được chấp nhận.",
+          "Vẫn kết luận sinh viên thiếu ý thức vì kết quả cuối cùng là đi học trễ.",
+          "Xem xét việc đi trễ trong các mối liên hệ cụ thể và quá trình dẫn đến nó, đồng thời không phủ nhận trách nhiệm cá nhân nếu trách nhiệm đó thực sự tồn tại.",
+          "Chỉ cần xác định một nguyên nhân quan trọng nhất rồi bỏ qua các yếu tố còn lại."
+        ],
+        correct: 2,
+        explain: "Cách nhìn biện chứng yêu cầu xem xét sự vật trong mối liên hệ, sự tác động qua lại và quá trình vận động, biến đổi. Tuy nhiên, nhìn đa chiều không đồng nghĩa với biện minh hay phủ nhận trách nhiệm cá nhân."
+      },
+      {
+        text: "Trong tình huống cây bị héo, phát biểu nào dưới đây thể hiện đầy đủ nhất điều mà cách nhìn biện chứng yêu cầu?",
+        answers: [
+          "Cây héo có thể do nhiều nguyên nhân khác nhau nên không thể xác định nguyên nhân nào.",
+          "Cần quan sát thêm các yếu tố như nước, đất, rễ, ánh sáng, nhiệt độ và môi trường, đồng thời xem xét quá trình cây thay đổi theo thời gian.",
+          "Chỉ cần kiểm tra đất đang khô hay ướt vì nước là yếu tố trực tiếp nhất liên quan đến cây héo.",
+          "Không nên đưa ra bất kỳ kết luận nào vì mọi sự vật đều thay đổi liên tục."
+        ],
+        correct: 1,
+        explain: "Điểm cốt lõi không chỉ là có nhiều nguyên nhân, mà là phải xem sự vật trong mạng lưới các mối liên hệ và trong quá trình vận động, biến đổi của chính nó."
+      }
+    ]
   }
 ];
 
@@ -685,7 +712,7 @@ function initMarioGame() {
       // Victory!
       clearInterval(timerInterval);
       saveScore(playerName, timerSec);
-      alert(`Chúc mừng ${playerName}! Bạn đã vượt qua 5 phòng Triết học và giải cứu thành công Công chúa Peach!`);
+      alert(`Chúc mừng ${playerName}! Bạn đã vượt qua ${marioRooms.length} phòng Triết học và giải cứu thành công Công chúa Peach!`);
       gameShell.classList.add('hidden');
       homeScreen.classList.remove('hidden');
       loadLeaderboard();

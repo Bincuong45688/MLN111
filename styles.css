@@ -19,8 +19,8 @@
   --text-dark: #0f172a;
   --text-muted: #475569;
   --text-light-muted: #64748b;
-  --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-heading: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  --font-main: Arial, Helvetica, sans-serif;
+  --font-heading: Arial, Helvetica, sans-serif;
   --radius-lg: 24px;
   --radius-md: 16px;
   --radius-sm: 10px;
@@ -2245,7 +2245,7 @@ html, body {
   color: rgba(255, 255, 255, 0.85);
   padding: 2px 7px;
   border-radius: 4px;
-  font-family: monospace;
+  font-family: Arial, Helvetica, sans-serif;
   font-size: 0.75rem;
 }
 
