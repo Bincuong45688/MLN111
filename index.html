@@ -148,6 +148,9 @@
             <button id="nextSlideBtn" class="slide-btn primary" title="Slide tiếp (Bàn phím: Mũi tên phải)">
               Tiếp theo <i class="fa-solid fa-arrow-right"></i>
             </button>
+            <button id="fullscreenBtn" class="slide-btn fullscreen-btn" title="Trình chiếu toàn màn hình (F)">
+              <i class="fa-solid fa-expand"></i> Trình chiếu
+            </button>
           </div>
         </div>
 
@@ -801,6 +804,51 @@
   </main>
 
   <script src="script.js"></script>
+
+  <!-- FULLSCREEN PRESENTATION OVERLAY -->
+  <div id="presentationOverlay" class="presentation-overlay" aria-hidden="true">
+    <!-- Top HUD bar -->
+    <div class="pres-hud">
+      <div class="pres-hud-left">
+        <span class="pres-badge"><i class="fa-solid fa-circle-play"></i> ĐANG TRÌNH CHIẾU</span>
+        <span class="pres-title-text" id="presTitleText"></span>
+      </div>
+      <div class="pres-hud-right">
+        <span class="pres-counter"><strong id="presCurrentNum">01</strong> / <span id="presTotalNum">10</span></span>
+        <button id="presExitBtn" class="pres-exit-btn" title="Thoát toàn màn hình (Esc)">
+          <i class="fa-solid fa-compress"></i> Thoát
+        </button>
+      </div>
+    </div>
+
+    <!-- Slide content area -->
+    <div class="pres-content" id="presContent">
+      <!-- Slide pages will be cloned here dynamically -->
+    </div>
+
+    <!-- Bottom navigation -->
+    <div class="pres-nav-bar">
+      <button id="presPrevBtn" class="pres-nav-btn" title="Slide trước (←)">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+
+      <div class="pres-thumb-strip" id="presThumbStrip">
+        <!-- dot indicators will be injected by JS -->
+      </div>
+
+      <button id="presNextBtn" class="pres-nav-btn" title="Slide tiếp (→)">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </div>
+
+    <!-- Keyboard hint -->
+    <div class="pres-hint">
+      <span><kbd>←</kbd> <kbd>→</kbd> Điều hướng</span>
+      <span><kbd>Esc</kbd> Thoát</span>
+    </div>
+  </div>
+
 </body>
+
 
 </html>

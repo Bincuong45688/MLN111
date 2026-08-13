@@ -107,7 +107,7 @@ function initSidebarDrawer() {
 function initSlidePresentation() {
   let currentSlide = 1;
   const slidePages = document.querySelectorAll('.slide-page');
-  const totalSlides = slidePages.length || 5;
+  const totalSlides = slidePages.length || 10;
 
   const currentSlideNumEl = document.getElementById('currentSlideNum');
   const totalSlideNumEl = document.getElementById('totalSlideNum');
@@ -115,7 +115,96 @@ function initSlidePresentation() {
   const slideAccentNumEl = document.getElementById('slideAccentNum');
   const prevBtn = document.getElementById('prevSlideBtn');
   const nextBtn = document.getElementById('nextSlideBtn');
+  const fullscreenBtn = document.getElementById('fullscreenBtn');
   const thumbBtns = document.querySelectorAll('.thumb-btn');
+
+  // Presentation Overlay Elements
+  const overlay = document.getElementById('presentationOverlay');
+  const presContent = document.getElementById('presContent');
+  const presCurrentNum = document.getElementById('presCurrentNum');
+  const presTotalNum = document.getElementById('presTotalNum');
+  const presTitleText = document.getElementById('presTitleText');
+  const presExitBtn = document.getElementById('presExitBtn');
+  const presPrevBtn = document.getElementById('presPrevBtn');
+  const presNextBtn = document.getElementById('presNextBtn');
+  const presThumbStrip = document.getElementById('presThumbStrip');
+
+  if (presTotalNum) presTotalNum.textContent = String(totalSlides).padStart(2, '0');
+
+  // Build Dot Strip for Fullscreen Overlay
+  if (presThumbStrip && presThumbStrip.children.length === 0) {
+    for (let i = 1; i <= totalSlides; i++) {
+      const dot = document.createElement('div');
+      dot.className = `pres-dot ${i === 1 ? 'active' : ''}`;
+      dot.dataset.slide = i;
+      dot.title = `Slide ${i}`;
+      dot.addEventListener('click', () => goToSlide(i));
+      presThumbStrip.appendChild(dot);
+    }
+  }
+
+  function syncFullscreenContent() {
+    if (!overlay || !overlay.classList.contains('active')) return;
+    
+    // Find active slide page element
+    const activePage = document.querySelector(`.slide-page[data-slide="${currentSlide}"]`);
+    if (activePage && presContent) {
+      // Clone active slide content for full screen display
+      presContent.innerHTML = '';
+      const card = document.createElement('div');
+      card.className = 'pres-slide-card';
+      card.innerHTML = activePage.innerHTML;
+      presContent.appendChild(card);
+
+      // Extract slide title for HUD
+      const titleEl = card.querySelector('.slide-title');
+      if (titleEl && presTitleText) {
+        presTitleText.textContent = titleEl.textContent;
+      }
+    }
+
+    if (presCurrentNum) presCurrentNum.textContent = String(currentSlide).padStart(2, '0');
+
+    // Update Dots
+    const dots = presThumbStrip ? presThumbStrip.querySelectorAll('.pres-dot') : [];
+    dots.forEach(dot => {
+      if (parseInt(dot.dataset.slide) === currentSlide) {
+        dot.classList.add('active');
+      } else {
+        dot.classList.remove('active');
+      }
+    });
+  }
+
+  function openFullscreenPresentation() {
+    if (!overlay) return;
+    overlay.classList.add('active');
+    overlay.setAttribute('aria-hidden', 'false');
+    
+    // Try browser HTML5 fullscreen API for true presentation experience
+    const docEl = document.documentElement;
+    if (docEl.requestFullscreen) {
+      docEl.requestFullscreen().catch(() => {});
+    } else if (docEl.webkitRequestFullscreen) {
+      docEl.webkitRequestFullscreen();
+    }
+
+    syncFullscreenContent();
+  }
+
+  function exitFullscreenPresentation() {
+    if (!overlay) return;
+    overlay.classList.remove('active');
+    overlay.setAttribute('aria-hidden', 'true');
+
+    if (document.fullscreenElement) {
+      if (document.exitFullscreen) {
+        document.exitFullscreen().catch(() => {});
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      }
+    }
+  }
 
   function goToSlide(slideNum) {
     if (slideNum < 1 || slideNum > totalSlides) return;
@@ -144,6 +233,9 @@ function initSlidePresentation() {
         btn.classList.remove('active');
       }
     });
+
+    // Sync fullscreen presentation if open
+    syncFullscreenContent();
   }
 
   if (prevBtn) {
@@ -158,21 +250,56 @@ function initSlidePresentation() {
     });
   }
 
+  if (fullscreenBtn) {
+    fullscreenBtn.addEventListener('click', openFullscreenPresentation);
+  }
+
+  if (presExitBtn) {
+    presExitBtn.addEventListener('click', exitFullscreenPresentation);
+  }
+
+  if (presPrevBtn) {
+    presPrevBtn.addEventListener('click', () => {
+      if (currentSlide > 1) goToSlide(currentSlide - 1);
+    });
+  }
+
+  if (presNextBtn) {
+    presNextBtn.addEventListener('click', () => {
+      if (currentSlide < totalSlides) goToSlide(currentSlide + 1);
+    });
+  }
+
   thumbBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       goToSlide(parseInt(btn.dataset.slide));
     });
   });
 
-  // Keyboard Left / Right Navigation for Slides
+  // Keyboard Navigation & Shortcuts for Slides & Fullscreen
   document.addEventListener('keydown', (e) => {
+    const isFullscreenActive = overlay && overlay.classList.contains('active');
     const slideSection = document.getElementById('section-slide');
-    if (!slideSection || !slideSection.classList.contains('active')) return;
+    const isSlideTabActive = slideSection && slideSection.classList.contains('active');
 
-    if (e.key === 'ArrowLeft') {
+    if (!isFullscreenActive && !isSlideTabActive) return;
+
+    if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
       if (currentSlide > 1) goToSlide(currentSlide - 1);
-    } else if (e.key === 'ArrowRight') {
+    } else if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
       if (currentSlide < totalSlides) goToSlide(currentSlide + 1);
+    } else if (e.key === 'Escape' && isFullscreenActive) {
+      exitFullscreenPresentation();
+    } else if ((e.key === 'f' || e.key === 'F') && isSlideTabActive && !isFullscreenActive) {
+      openFullscreenPresentation();
+    }
+  });
+
+  // Listen for browser native escape exit fullscreen
+  document.addEventListener('fullscreenchange', () => {
+    if (!document.fullscreenElement && overlay && overlay.classList.contains('active')) {
+      overlay.classList.remove('active');
+      overlay.setAttribute('aria-hidden', 'true');
     }
   });
 }
