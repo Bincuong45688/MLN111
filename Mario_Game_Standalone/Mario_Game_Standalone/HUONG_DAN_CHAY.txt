@@ -1,0 +1,14 @@
+HUONG DAN CHAY GAME MARIO
+
+1. Giai nen file zip.
+2. Mo file index.html bang Chrome, Edge hoac Coc Coc.
+3. Nhap ten nguoi choi va bam Bat dau.
+
+Luu y:
+- Neu chay truc tiep bang index.html tren may tinh, bang xep hang se luu rieng tren trinh duyet cua may do.
+- Neu muon nhieu may/nhieu dien thoai choi chung mot bang xep hang online, hay deploy len Vercel va cau hinh Redis:
+  UPSTASH_REDIS_REST_URL
+  UPSTASH_REDIS_REST_TOKEN
+  ADMIN_RESET_CODE
+
+Ma admin mac dinh de reset bang xep hang la: admin
