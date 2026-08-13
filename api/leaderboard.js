@@ -7,8 +7,22 @@ function sendJson(res, status, data) {
 }
 
 async function redis(command) {
-  const url = process.env.UPSTASH_REDIS_REST_URL;
-  const token = process.env.UPSTASH_REDIS_REST_TOKEN;
+  let url = process.env.UPSTASH_REDIS_REST_URL;
+  let token = process.env.UPSTASH_REDIS_REST_TOKEN;
+
+  // Clean surrounding quotes if present
+  if (url) {
+    url = url.trim();
+    if ((url.startsWith('"') && url.endsWith('"')) || (url.startsWith("'") && url.endsWith("'"))) {
+      url = url.slice(1, -1);
+    }
+  }
+  if (token) {
+    token = token.trim();
+    if ((token.startsWith('"') && token.endsWith('"')) || (token.startsWith("'") && token.endsWith("'"))) {
+      token = token.slice(1, -1);
+    }
+  }
 
   if (!url || !token) {
     throw new Error("Missing Upstash Redis environment variables.");
