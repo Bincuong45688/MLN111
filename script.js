@@ -698,25 +698,61 @@ function initMarioGame() {
     homeScreen.classList.remove('hidden');
   });
 
-  function saveScore(name, time) {
+  async function saveScore(name, time) {
+    // 1. Try backend API first
+    try {
+      const response = await fetch('/api/leaderboard', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name, time })
+      });
+      if (response.ok) {
+        console.log('Score saved to Upstash Redis successfully.');
+        return;
+      }
+    } catch (e) {
+      console.warn('Leaderboard API not available, falling back to LocalStorage:', e);
+    }
+
+    // 2. Fallback to localStorage
     let board = JSON.parse(localStorage.getItem('mario_rank') || '[]');
     board.push({ name, time });
     board.sort((a, b) => a.time - b.time);
     localStorage.setItem('mario_rank', JSON.stringify(board.slice(0, 5)));
   }
 
-  function loadLeaderboard() {
-    let board = JSON.parse(localStorage.getItem('mario_rank') || '[]');
+  async function loadLeaderboard() {
     const body = document.getElementById('homeRankBody');
     if (!body) return;
-    body.innerHTML = '';
+    body.innerHTML = '<tr><td colspan="3">Đang tải bảng xếp hạng...</td></tr>';
 
+    let board = [];
+    
+    // 1. Try backend API first
+    try {
+      const response = await fetch('/api/leaderboard');
+      if (response.ok) {
+        const data = await response.json();
+        if (data && Array.isArray(data.rows)) {
+          board = data.rows;
+        }
+      }
+    } catch (e) {
+      console.warn('Leaderboard API failed to load, falling back to LocalStorage:', e);
+      // Fallback
+      board = JSON.parse(localStorage.getItem('mario_rank') || '[]');
+    }
+
+    body.innerHTML = '';
     if (board.length === 0) {
       body.innerHTML = '<tr><td colspan="3">Chưa có lượt chơi nào</td></tr>';
       return;
     }
 
-    board.forEach((item, idx) => {
+    // Display top 5
+    board.slice(0, 5).forEach((item, idx) => {
       const mins = Math.floor(item.time / 60);
       const secs = item.time % 60;
       const tr = document.createElement('tr');
@@ -727,9 +763,33 @@ function initMarioGame() {
 
   const resetRankBtn = document.getElementById('resetRankButton');
   if (resetRankBtn) {
-    resetRankBtn.addEventListener('click', () => {
-      localStorage.removeItem('mario_rank');
-      loadLeaderboard();
+    resetRankBtn.addEventListener('click', async () => {
+      const adminCode = prompt('Nhập mã xác nhận của Admin để reset bảng xếp hạng:');
+      if (adminCode === null) return; // Cancelled
+
+      // 1. Try API first
+      try {
+        const response = await fetch('/api/leaderboard', {
+          method: 'DELETE',
+          headers: {
+            'x-admin-code': adminCode
+          }
+        });
+        
+        if (response.ok) {
+          alert('Đã reset bảng xếp hạng trực tuyến thành công!');
+          loadLeaderboard();
+          return;
+        } else {
+          const errData = await response.json();
+          alert(`Lỗi: ${errData.error || 'Reset thất bại.'}`);
+        }
+      } catch (e) {
+        console.warn('API reset failed, resetting local storage:', e);
+        localStorage.removeItem('mario_rank');
+        alert('Đã reset bảng xếp hạng cục bộ (LocalStorage).');
+        loadLeaderboard();
+      }
     });
   }
 }
