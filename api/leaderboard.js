@@ -125,11 +125,23 @@ module.exports = async function handler(req, res) {
     }
 
     if (req.method === "DELETE") {
-      const adminCode = req.headers["x-admin-code"];
-      const expectedCode = process.env.ADMIN_RESET_CODE || "admin";
+      let adminCode = req.headers["x-admin-code"] || "";
+      let expectedCode = process.env.ADMIN_RESET_CODE || "admin";
+
+      // Clean adminCode
+      adminCode = adminCode.trim();
+      if ((adminCode.startsWith('"') && adminCode.endsWith('"')) || (adminCode.startsWith("'") && adminCode.endsWith("'"))) {
+        adminCode = adminCode.slice(1, -1);
+      }
+
+      // Clean expectedCode
+      expectedCode = expectedCode.trim();
+      if ((expectedCode.startsWith('"') && expectedCode.endsWith('"')) || (expectedCode.startsWith("'") && expectedCode.endsWith("'"))) {
+        expectedCode = expectedCode.slice(1, -1);
+      }
 
       if (adminCode !== expectedCode) {
-        sendJson(res, 403, { error: "Wrong admin code." });
+        sendJson(res, 403, { error: `Wrong admin code. Received: [${adminCode}], Expected: [${expectedCode}]` });
         return;
       }
 
