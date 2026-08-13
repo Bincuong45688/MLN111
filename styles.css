@@ -39,6 +39,31 @@ html, body {
   position: relative;
 }
 
+/* Use one presentation-safe sans-serif font across all visible text. */
+body,
+body * {
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+/* Preserve the icon font used by Font Awesome. */
+.fa-solid,
+.fas {
+  font-family: "Font Awesome 6 Free" !important;
+  font-weight: 900;
+}
+
+.fa-regular,
+.far {
+  font-family: "Font Awesome 6 Free" !important;
+  font-weight: 400;
+}
+
+.fa-brands,
+.fab {
+  font-family: "Font Awesome 6 Brands" !important;
+  font-weight: 400;
+}
+
 /* Subtle background accent glow (Light Mode) */
 .bg-stars {
   position: fixed;
