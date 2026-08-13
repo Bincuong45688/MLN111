@@ -790,7 +790,7 @@ html, body {
 }
 
 .slide-body {
-  padding: 44px 48px;
+  padding: 24px 36px;
   color: var(--text-dark);
   position: relative;
   display: flex;
@@ -837,11 +837,11 @@ html, body {
 
 .slide-title {
   font-family: var(--font-heading);
-  font-size: 2.2rem;
+  font-size: 1.8rem;
   font-weight: 800;
   color: #1e3a8a;
-  margin-bottom: 24px;
-  line-height: 1.25;
+  margin-bottom: 12px;
+  line-height: 1.2;
 }
 
 .slide-section-title {
@@ -992,13 +992,14 @@ html, body {
 .slide-summary-bar {
   display: flex;
   align-items: center;
-  gap: 14px;
-  padding: 16px 20px;
+  gap: 12px;
+  padding: 8px 16px;
   background: #eff6ff;
   border-radius: var(--radius-md);
   border-left: 4px solid #2563eb;
   color: #1e3a8a;
-  font-size: 0.95rem;
+  font-size: 0.88rem;
+  margin-bottom: 8px;
 }
 
 .slide-summary-bar i {
@@ -1863,10 +1864,123 @@ html, body {
   margin-bottom: 4px;
 }
 
-.ai-text p {
+/* Flow Process & Diagram Styles */
+.flow-diagram-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: #f8fafc;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.flow-step-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #ffffff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border-left: 4px solid #3b82f6;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.01);
+}
+
+.flow-step-item.step-wrong {
+  border-left-color: #ef4444;
+}
+
+.flow-step-item.step-correct {
+  border-left-color: #22c55e;
+}
+
+.flow-step-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #eff6ff;
+  color: #2563eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.flow-step-item.step-wrong .flow-step-icon {
+  background: #fef2f2;
+  color: #ef4444;
+}
+
+.flow-step-item.step-correct .flow-step-icon {
+  background: #f0fdf4;
+  color: #22c55e;
+}
+
+.flow-step-text {
   font-size: 0.85rem;
+  line-height: 1.35;
+  color: #334155;
+  font-weight: 550;
+}
+
+.flow-step-text strong {
+  color: #0f172a;
+}
+
+.flow-connector-arrow {
+  text-align: center;
+  color: #94a3b8;
+  font-size: 0.75rem;
+  margin: -6px 0;
+}
+
+/* Image Placeholder Frame */
+.slide-image-frame {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  background: #f1f5f9;
+  border: 2px dashed #cbd5e1;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   color: #64748b;
-  line-height: 1.4;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  margin-bottom: 12px;
+}
+
+.slide-image-frame img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  z-index: 2;
+}
+
+.slide-image-frame:hover {
+  border-color: #94a3b8;
+  background: #e2e8f0;
+}
+
+.slide-image-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-top: 6px;
+  color: #475569;
+  text-align: center;
+  padding: 0 10px;
+}
+
+.slide-image-frame i {
+  font-size: 1.6rem;
+  color: #94a3b8;
 }
 
 /* ==========================================================================
