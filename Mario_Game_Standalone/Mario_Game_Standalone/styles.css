@@ -2519,3 +2519,109 @@ body.room-active .rank-panel td {
     max-height: 60dvh;
   }
 }
+
+/* Leaderboard Toggle and Header Styling */
+.show-rank-btn {
+  border: 5px solid var(--line);
+  border-radius: 10px;
+  padding: 12px 24px;
+  background: #f59e0b; /* Orange/amber */
+  color: #fff;
+  font-size: 1.05rem;
+  font-weight: 900;
+  box-shadow: 0 8px 0 rgba(23,32,51,0.22);
+  cursor: pointer;
+  margin-top: 6px;
+  display: inline-block;
+  transition: all 0.15s ease;
+  font-family: inherit;
+}
+
+.show-rank-btn:hover {
+  background: #d97706;
+  transform: translateY(-1px);
+}
+
+.show-rank-btn:active {
+  transform: translateY(2px);
+  box-shadow: 0 3px 0 rgba(23,32,51,0.22);
+}
+
+.home-rank.hidden {
+  display: none !important;
+}
+
+.rank-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--blue);
+  color: #fff;
+  border-bottom: 4px solid var(--line);
+  padding: 8px 12px;
+}
+
+.rank-header h2 {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  font-size: 1.15rem;
+  font-weight: 900;
+  min-height: 0 !important;
+}
+
+.rank-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.back-home-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 3px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--blue);
+  cursor: pointer;
+  box-shadow: 0 3px 0 rgba(23,32,51,0.15);
+  font-size: 0.9rem;
+  transition: all 0.1s ease;
+}
+
+.back-home-btn:hover {
+  background: #f1f5f9;
+  transform: translateY(-1px);
+}
+
+.back-home-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 0 rgba(23,32,51,0.15);
+}
+
+.admin-reset {
+  border: 3px solid var(--line);
+  border-radius: 6px;
+  padding: 4px 10px;
+  background: #ffffff;
+  color: var(--red);
+  font-size: 0.78rem;
+  font-weight: 900;
+  cursor: pointer;
+  box-shadow: 0 3px 0 rgba(23,32,51,0.15);
+  font-family: inherit;
+  transition: all 0.1s ease;
+}
+
+.admin-reset:hover {
+  background: #fef2f2;
+  transform: translateY(-1px);
+}
+
+.admin-reset:active {
+  transform: translateY(1px);
+  box-shadow: 0 1px 0 rgba(23,32,51,0.15);
+}

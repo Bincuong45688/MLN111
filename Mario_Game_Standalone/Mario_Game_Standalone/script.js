@@ -1,274 +1,136 @@
-const oldRooms = [
-  {
-    title: "Phòng 1: Khái niệm giai cấp",
-    questions: [
-      {
-        text: "Theo chủ nghĩa duy vật lịch sử, giai cấp được hình thành chủ yếu dựa trên cơ sở nào?",
-        answers: [
-          "Vị trí khác nhau của các nhóm người trong hệ thống sản xuất xã hội",
-          "Sở thích cá nhân và phong cách tiêu dùng của từng người",
-          "Màu da, giới tính hoặc đặc điểm sinh học bẩm sinh",
-          "Mức độ nổi tiếng trên mạng xã hội"
-        ],
-        correct: 0,
-        explain: "Giai cấp gắn với vị trí trong sản xuất, đặc biệt là quan hệ với tư liệu sản xuất và phân phối sản phẩm."
-      },
-      {
-        text: "Vì sao phân chia giai cấp trong xã hội có tư hữu về tư liệu sản xuất mang tính khách quan?",
-        answers: [
-          "Vì nó nảy sinh từ quan hệ kinh tế hiện thực, không phụ thuộc vào ý muốn riêng của cá nhân",
-          "Vì mọi người tự nguyện chọn mình thuộc giai cấp nào",
-          "Vì nhà nước chỉ cần ban hành luật là tạo ra giai cấp",
-          "Vì công nghệ cao tự động xóa mọi bất bình đẳng"
-        ],
-        correct: 0,
-        explain: "Khi tư liệu sản xuất thuộc về một bộ phận xã hội, sự khác biệt lợi ích kinh tế xuất hiện một cách khách quan."
-      }
-    ]
-  },
-  {
-    title: "Phòng 2: Đấu tranh giai cấp",
-    questions: [
-      {
-        text: "Đấu tranh giai cấp xuất hiện khi nào?",
-        answers: [
-          "Khi lợi ích cơ bản giữa các giai cấp đối lập không thể điều hòa trong một trật tự xã hội nhất định",
-          "Khi mọi người có quan điểm giống nhau về phân phối của cải",
-          "Khi xã hội không còn chế độ tư hữu",
-          "Khi con người ngừng lao động sản xuất"
-        ],
-        correct: 0,
-        explain: "Đấu tranh giai cấp bắt nguồn từ mâu thuẫn lợi ích giữa những giai cấp có vị trí kinh tế đối lập."
-      },
-      {
-        text: "Trong xã hội số, đấu tranh giai cấp có thể chuyển hóa thành hình thức nào?",
-        answers: [
-          "Đấu tranh về quyền tiếp cận dữ liệu, nền tảng, kỹ năng số và lợi ích từ công nghệ",
-          "Chỉ còn là cuộc thi xem ai dùng điện thoại đời mới hơn",
-          "Biến mất hoàn toàn vì internet làm mọi người bình đẳng tuyệt đối",
-          "Chỉ là xung đột giữa các hãng sản xuất trò chơi"
-        ],
-        correct: 0,
-        explain: "Hình thức có thể thay đổi, nhưng mâu thuẫn về quyền kiểm soát nguồn lực và lợi ích kinh tế vẫn tồn tại."
-      }
-    ]
-  },
-  {
-    title: "Phòng 3: Xã hội số và bất bình đẳng",
-    questions: [
-      {
-        text: "Khái niệm 'bất bình đẳng số' trong activity của nhóm nói đến điều gì?",
-        answers: [
-          "Khoảng cách giữa người có khả năng truy cập, làm chủ công nghệ và người bị bỏ lại phía sau",
-          "Sự khác nhau về màu sắc giao diện máy tính",
-          "Việc người trẻ chơi game nhiều hơn người lớn tuổi",
-          "Sự cạnh tranh giữa các nhân vật trong game Mario"
-        ],
-        correct: 0,
-        explain: "Bất bình đẳng số phản ánh khoảng cách về hạ tầng, kỹ năng, dữ liệu và cơ hội hưởng lợi từ công nghệ."
-      },
-      {
-        text: "Vì sao 'tư duy làm chủ tri thức' chưa đủ để phủ nhận sự tồn tại của giai cấp?",
-        answers: [
-          "Vì tri thức cũng chịu tác động bởi quyền sở hữu, điều kiện tiếp cận và cơ hội sử dụng công nghệ",
-          "Vì tri thức chỉ có trong sách giấy",
-          "Vì ai lên mạng cũng tự động có cùng cơ hội phát triển",
-          "Vì giai cấp chỉ là khái niệm trong quá khứ, không liên quan kinh tế"
-        ],
-        correct: 0,
-        explain: "Trong xã hội số, tri thức là nguồn lực quan trọng nhưng không được phân phối ngang bằng cho mọi người."
-      }
-    ]
-  },
-  {
-    title: "Phòng 4: Tính lịch sử và tất yếu",
-    questions: [
-      {
-        text: "Nói phân chia giai cấp có tính lịch sử nghĩa là gì?",
-        answers: [
-          "Giai cấp không tồn tại vĩnh viễn, mà xuất hiện và biến đổi theo những điều kiện lịch sử nhất định",
-          "Giai cấp xuất hiện do một câu chuyện cổ tích",
-          "Giai cấp là hiện tượng tự nhiên giống thời tiết",
-          "Giai cấp chỉ tồn tại trong môn Lịch sử"
-        ],
-        correct: 0,
-        explain: "Giai cấp ra đời khi sản xuất phát triển đến mức có của cải dư thừa và tư hữu về tư liệu sản xuất."
-      },
-      {
-        text: "Trong các xã hội còn chế độ tư hữu về tư liệu sản xuất, vì sao phân chia giai cấp có tính tất yếu?",
-        answers: [
-          "Vì tư hữu tạo ra sự khác biệt về quyền chiếm hữu, tổ chức sản xuất và phân phối lợi ích",
-          "Vì mọi người sinh ra đã cố định thuộc một giai cấp mãi mãi",
-          "Vì chỉ cần có mạng xã hội là tự nhiên có giai cấp",
-          "Vì nhà trường bắt buộc phải chia lớp học thành giai cấp"
-        ],
-        correct: 0,
-        explain: "Chừng nào quyền sở hữu và kiểm soát tư liệu sản xuất còn không ngang nhau, phân hóa giai cấp còn có cơ sở tồn tại."
-      }
-    ]
-  },
-  {
-    title: "Phòng 5: Giai cấp và dân tộc",
-    questions: [
-      {
-        text: "Mối quan hệ giữa vấn đề giai cấp và vấn đề dân tộc nên được hiểu như thế nào?",
-        answers: [
-          "Hai vấn đề có liên hệ với nhau; lợi ích dân tộc cần được nhìn trong bối cảnh lợi ích giai cấp cụ thể",
-          "Hai vấn đề hoàn toàn tách rời, không bao giờ tác động qua lại",
-          "Dân tộc chỉ là tên gọi địa lý nên không liên quan xã hội",
-          "Giai cấp luôn tự động biến mất khi nhắc đến dân tộc"
-        ],
-        correct: 0,
-        explain: "Trong duy vật lịch sử, dân tộc và giai cấp đều gắn với điều kiện kinh tế - xã hội và lợi ích cụ thể."
-      },
-      {
-        text: "Kết luận phù hợp nhất cho activity của nhóm là gì?",
-        answers: [
-          "Giai cấp vẫn tồn tại trong xã hội số, còn đấu tranh giai cấp chuyển hóa sang cả lĩnh vực dữ liệu, công nghệ và tri thức",
-          "Công nghệ cao đã làm mọi mâu thuẫn giai cấp biến mất hoàn toàn",
-          "Chỉ người không biết dùng máy tính mới thuộc giai cấp bị trị",
-          "Bất bình đẳng số chỉ là vấn đề giải trí, không liên quan sản xuất"
-        ],
-        correct: 0,
-        explain: "Xã hội số không xóa ngay cơ sở kinh tế của giai cấp; nó làm hình thức phân tầng và đấu tranh trở nên mới hơn."
-      }
-    ]
-  }
-];
-
 const rooms = [
   {
-    title: "Ph?ng 1",
+    title: "Phòng 1: Khái niệm & Biện chứng",
     questions: [
       {
-        text: "Giai ?o?n n?o H? Ch? Minh h?nh th?nh t? t??ng y?u n??c v? ch? h??ng c?u n??c?",
+        text: "Phương pháp tư duy biện chứng nhìn nhận sự vật trong trạng thái nào?",
         answers: [
-          "1911-1920",
-          "1920-1930",
-          "Tr??c 1911",
-          "T? n?m 1941 ??n n?m 1969"
-        ],
-        correct: 2,
-        explain: "Tr??c n?m 1911, H? Ch? Minh ?? h?nh th?nh t? t??ng y?u n??c v? ch? h??ng c?u n??c t? truy?n th?ng gia ??nh, qu? h??ng v? d?n t?c."
-      },
-      {
-        text: "N?m n?o Nguy?n T?t Th?nh ra ?i t?m ???ng c?u n??c?",
-        answers: [
-          "1911",
-          "1920",
-          "N?m 1930",
-          "N?m 1941 khi Ng??i tr? v? n??c"
+          "Trong mối liên hệ phổ biến, vận động và phát triển không ngừng",
+          "Cô lập, tĩnh tại và không bao giờ thay đổi",
+          "Chỉ tồn tại trong ý nghĩ, không có thực",
+          "Tùy thuộc hoàn toàn vào may mắn"
         ],
         correct: 0,
-        explain: "Ng?y 5/6/1911, Nguy?n T?t Th?nh ra ?i t?m ???ng c?u n??c t? B?n Nh? R?ng."
+        explain: "Tư duy biện chứng xem xét sự vật trong mối liên hệ, vận động và biến đổi khách quan."
+      },
+      {
+        text: "Biện chứng chủ quan là gì?",
+        answers: [
+          "Là biện chứng của tư duy con người, phản ánh biện chứng khách quan",
+          "Là sự biến đổi của thời tiết và vũ trụ",
+          "Là các quy luật vật lý tự nhiên",
+          "Là suy nghĩ ngẫu nhiên không có quy luật"
+        ],
+        correct: 0,
+        explain: "Biện chứng chủ quan là tư duy, khái niệm được phản ánh vào bộ óc con người."
       }
     ]
   },
   {
-    title: "Ph?ng 2",
+    title: "Phòng 2: Phép biện chứng duy vật",
     questions: [
       {
-        text: "S? ki?n n?o ???c xem l? b??c ngo?t quan tr?ng gi?p Nguy?n ?i Qu?c t?m th?y con ???ng c?u n??c ??ng ??n?",
+        text: "Phép biện chứng duy vật do ai sáng lập và phát triển?",
         answers: [
-          "Th?nh l?p ??ng C?ng s?n Vi?t Nam",
-          "Tr? v? Vi?t Nam tr?c ti?p l?nh ??o c?ch m?ng",
-          "Th?ng l?i c?a C?ch m?ng th?ng T?m n?m 1945",
-          "??c Lu?n c??ng c?a L?nin"
+          "K. Mác, Ph. Ăng-ghen và V.I. Lênin",
+          "Socrates và Plato",
+          "Newton và Einstein",
+          "Adam Smith"
         ],
-        correct: 3,
-        explain: "Vi?c ??c Lu?n c??ng c?a L?nin gi?p Nguy?n ?i Qu?c t?m th?y con ???ng gi?i ph?ng d?n t?c theo c?ch m?ng v? s?n."
+        correct: 0,
+        explain: "Phép biện chứng duy vật do Mác & Ăng-ghen sáng lập, Lênin phát triển."
       },
       {
-        text: "Y?u t? l? lu?n n?o quy?t ??nh b?n ch?t khoa h?c v? c?ch m?ng c?a t? t??ng H? Ch? Minh?",
+        text: "Nguyên lý nào là cột trụ của phép biện chứng duy vật?",
         answers: [
-          "Tinh hoa v?n h?a c?a c?c qu?c gia ph??ng T?y",
-          "Nh?ng gi? tr? truy?n th?ng t?t ??p c?a d?n t?c Vi?t Nam",
-          "Ch? ngh?a M?c-L?nin",
-          "C?c t? t??ng ti?n b? c?a v?n h?a ph??ng ??ng v? ph??ng T?y"
+          "Nguyên lý về mối liên hệ phổ biến và Nguyên lý về sự phát triển",
+          "Nguyên lý bảo toàn năng lượng",
+          "Nguyên lý bất biến của vũ trụ",
+          "Nguyên lý ngẫu nhiên"
         ],
-        correct: 2,
-        explain: "Ch? ngh?a M?c-L?nin l? c? s? l? lu?n quy?t ??nh b?n ch?t khoa h?c v? c?ch m?ng c?a t? t??ng H? Ch? Minh."
+        correct: 0,
+        explain: "Hai nguyên lý cơ bản nhất là mối liên hệ phổ biến và sự phát triển."
       }
     ]
   },
   {
-    title: "Ph?ng 3",
+    title: "Phòng 3: Khái niệm Giai cấp",
     questions: [
       {
-        text: "V? sao th?i k? 1911-1920 ???c xem l? th?i k? c? ? ngh?a b??c ngo?t trong qu? tr?nh h?nh th?nh t? t??ng H? Ch? Minh?",
+        text: "Theo V.I. Lênin, giai cấp được định nghĩa chủ yếu dựa vào yếu tố nào?",
         answers: [
-          "V? ??y l? th?i k? H? Ch? Minh tr?c ti?p l?nh ??o nh?n d?n ti?n h?nh C?ch m?ng th?ng T?m.",
-          "V? trong giai ?o?n n?y, H? Ch? Minh ?? ho?n thi?n to?n b? h? th?ng quan ?i?m v? x?y d?ng ch? ngh?a x? h?i t?i Vi?t Nam.",
-          "V? ??y l? qu? tr?nh Ng??i kh?o nghi?m nhi?u con ???ng c?u n??c, ti?p c?n ch? ngh?a M?c-L?nin v? chuy?n t? l?p tr??ng c?a m?t ng??i y?u n??c sang l?p tr??ng c?a ng??i c?ng s?n.",
-          "V? ??y l? th?i k? Vi?t Nam ?? gi?nh ???c ??c l?p v? b?t ??u ti?n h?nh x?y d?ng m?t nh? n??c m?i."
+          "Vị trí và quan hệ sở hữu tư liệu sản xuất trong xã hội",
+          "Sở thích và phong cách thời trang",
+          "Độ tuổi và giới tính",
+          "Sự nổi tiếng trên truyền thông"
         ],
-        correct: 2,
-        explain: "Giai ?o?n 1911-1920 ??nh d?u s? chuy?n bi?n t? ch? ngh?a y?u n??c ??n l?p tr??ng c?ng s?n, m? ra con ???ng c?u n??c ??ng ??n."
+        correct: 0,
+        explain: "Giai cấp gắn với vị trí trong hệ thống sản xuất và sở hữu tư liệu sản xuất."
       },
       {
-        text: "? ngh?a quan tr?ng nh?t c?a vi?c Nguy?n ?i Qu?c ??c S? th?o Lu?n c??ng c?a L?nin n?m 1920 l? g??",
+        text: "Nguồn gốc sâu xa dẫn đến sự ra đời của giai cấp là gì?",
         answers: [
-          "Gi?p Ng??i hi?u r? h?n v? l?ch s? c?c cu?c c?ch m?ng t? s?n ?? di?n ra t?i ch?u ?u.",
-          "Gi?p Nguy?n ?i Qu?c x?c ??nh r?ng nhi?m v? tr??c m?t ch? c?n t?p trung v?o ??u tranh kinh t? c?a c?ng nh?n.",
-          "Gi?p Ng??i nh?n th?c r? s? ph?t tri?n c?a ch? ngh?a t? b?n t?i c?c n??c ph??ng T?y ???ng th?i.",
-          "Gi?p Nguy?n ?i Qu?c t?m th?y l?i gi?i cho v?n ?? gi?i ph?ng d?n t?c, x?c ??nh con ???ng c?ch m?ng v? s?n l? con ???ng ph? h?p ?? ??u tranh gi?nh ??c l?p cho d?n t?c Vi?t Nam."
+          "Lực lượng sản xuất phát triển tạo của cải dư thừa và xuất hiện chế độ tư hữu",
+          "Do con người thích chia rẽ nhau",
+          "Do thiên tai bão lũ",
+          "Do chiếu chỉ của nhà vua"
         ],
-        correct: 3,
-        explain: "S? th?o Lu?n c??ng c?a L?nin gi?p Nguy?n ?i Qu?c t?m th?y con ???ng c?ch m?ng v? s?n cho s? nghi?p gi?i ph?ng d?n t?c Vi?t Nam."
+        correct: 0,
+        explain: "Sự ra đời của chế độ tư hữu về tư liệu sản xuất là nguồn gốc trực tiếp hình thành giai cấp."
       }
     ]
   },
   {
-    title: "Ph?ng 4",
+    title: "Phòng 4: Kết cấu Xã hội – Giai cấp",
     questions: [
       {
-        text: "Trong giai ?o?n 1920-1930, n?i dung n?o sau ??y ???c h?nh th?nh c? b?n trong t? t??ng H? Ch? Minh?",
+        text: "Giai cấp nào sau đây là giai cấp cơ bản trong xã hội tư bản?",
         answers: [
-          "??u tranh gi?nh ??c l?p b?ng con ???ng c?i c?ch ?n h?a v? d?a v?o c?c n??c t? b?n ph?t tri?n.",
-          "C?ch m?ng gi?i ph?ng d?n t?c mu?n th?ng l?i ph?i ?i theo con ???ng c?ch m?ng v? s?n.",
-          "Ch? giai c?p c?ng nh?n m?i ???c tham gia v?o qu? tr?nh ??u tranh gi?nh l?i ??c l?p d?n t?c.",
-          "Vi?t Nam c?n ti?n h?nh c?ch m?ng t? s?n tr??c r?i m?i xem x?t ??n v?n ?? ??c l?p d?n t?c."
+          "Tư sản và Vô sản",
+          "Chủ nô và Nô lệ",
+          "Địa chủ và Nông dân",
+          "Thợ thủ công nhỏ"
         ],
-        correct: 1,
-        explain: "Trong giai ?o?n 1920-1930, t? t??ng v? con ???ng c?ch m?ng v? s?n cho gi?i ph?ng d?n t?c ???c h?nh th?nh c? b?n."
+        correct: 0,
+        explain: "Trong xã hội tư bản, Tư sản và Vô sản là 2 giai cấp cơ bản."
       },
       {
-        text: "?i?m n?i b?t trong c?ch H? Ch? Minh ti?p thu ch? ngh?a M?c-L?nin l? g??",
+        text: "Tầng lớp nào đóng vai trò trung gian trong kết cấu xã hội?",
         answers: [
-          "Ti?p thu to?n b? l? lu?n v? ?p d?ng gi?ng ho?n to?n m? h?nh c?a c?ch m?ng Nga.",
-          "Ch? l?a ch?n nh?ng n?i dung li?n quan tr?c ti?p ??n ??u tranh c?a giai c?p c?ng nh?n.",
-          "B? qua c?c y?u t? truy?n th?ng d?n t?c ?? t?p trung ho?n to?n v?o l? lu?n c?ch m?ng ph??ng T?y.",
-          "Ti?p thu c? ch?n l?c v? v?n d?ng s?ng t?o v?o ?i?u ki?n th?c ti?n c? th? c?a c?ch m?ng Vi?t Nam."
+          "Trí thức, giới tu hành và nhóm nghề nghiệp đặc thù",
+          "Giai cấp thống trị",
+          "Giai cấp nô lệ",
+          "Các hoàng tộc cổ đại"
         ],
-        correct: 3,
-        explain: "H? Ch? Minh ti?p thu ch? ngh?a M?c-L?nin m?t c?ch ch?n l?c, s?ng t?o v? g?n v?i th?c ti?n Vi?t Nam."
+        correct: 0,
+        explain: "Trí thức là tầng lớp xã hội trung gian có vai trò quan trọng trong đời sống văn hóa tinh thần."
       }
     ]
   },
   {
-    title: "Ph?ng 5",
+    title: "Phòng 5: Đấu tranh Giai cấp & Giải cứu",
     questions: [
       {
-        text: "T?i ??i h?i Tua th?ng 12/1920, Nguy?n ?i Qu?c t?n th?nh t? ch?c qu?c t? n?o?",
+        text: "Đấu tranh giai cấp giữ vai trò gì đối với sự phát triển của xã hội có giai cấp?",
         answers: [
-          "Qu?c t? th? hai",
-          "H?i Qu?c Li?n",
-          "Qu?c t? III",
-          "Li?n minh c?c d?n t?c thu?c ??a"
+          "Là động lực trực tiếp của sự phát triển xã hội",
+          "Là nguyên nhân gây kìm hãm xã hội",
+          "Không có ảnh hưởng gì",
+          "Chỉ xảy ra trong quá khứ"
         ],
-        correct: 2,
-        explain: "T?i ??i h?i Tua th?ng 12/1920, Nguy?n ?i Qu?c t?n th?nh Qu?c t? III v? tham gia s?ng l?p ??ng C?ng s?n Ph?p."
+        correct: 0,
+        explain: "Đấu tranh giai cấp thúc đẩy thay đổi hình thái kinh tế - xã hội lên nấc thang cao hơn."
       },
       {
-        text: "Theo t? t??ng H? Ch? Minh, ??c l?p d?n t?c ph?i g?n li?n v?i ?i?u g??",
+        text: "Trong xã hội số hiện đại, bất bình đẳng giai cấp thể hiện qua khía cạnh nào?",
         answers: [
-          "Ph?t tri?n t? b?n",
-          "C?ng nghi?p h?a ??t n??c",
-          "H?i nh?p v?i c?c n??c ph??ng T?y",
-          "Ch? ngh?a x? h?i"
+          "Sở hữu dữ liệu, tri thức, hạ tầng công nghệ và kỹ năng số",
+          "Chỉ là việc ai mua máy tính đắt hơn",
+          "Không còn bất bình đẳng nào",
+          "Chỉ ở điểm số trò chơi"
         ],
-        correct: 3,
-        explain: "Theo t? t??ng H? Ch? Minh, ??c l?p d?n t?c ph?i g?n li?n v?i ch? ngh?a x? h?i."
+        correct: 0,
+        explain: "Xã hội số tạo ra khoảng cách tiếp cận công nghệ và quyền kiểm soát dữ liệu tri thức."
       }
     ]
   }
@@ -902,6 +764,24 @@ startButton.addEventListener("click", () => {
   document.body.classList.remove("home-active");
   startRoomEntry(0);
 });
+
+// Leaderboard Toggle Event Listeners
+const showRankButton = document.getElementById("showRankButton");
+const closeRankButton = document.getElementById("closeRankButton");
+const startScreenContent = document.getElementById("startScreenContent");
+const homeRankSection = document.getElementById("homeRankSection");
+
+if (showRankButton && closeRankButton && startScreenContent && homeRankSection) {
+  showRankButton.addEventListener("click", () => {
+    startScreenContent.classList.add("hidden");
+    homeRankSection.classList.remove("hidden");
+  });
+
+  closeRankButton.addEventListener("click", () => {
+    startScreenContent.classList.remove("hidden");
+    homeRankSection.classList.add("hidden");
+  });
+}
 
 createRooms();
 syncLeaderboard();

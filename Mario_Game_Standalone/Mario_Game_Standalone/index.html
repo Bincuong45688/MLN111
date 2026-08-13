@@ -5,20 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mario giải cứu công chúa</title>
   <link rel="stylesheet" href="styles.css?v=20260813-3">
+  <!-- Link FontAwesome for home icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body class="home-active">
   <section class="home-screen" id="homeScreen" aria-label="Trang chủ">
-    <div class="home-card">
-      <span class="home-badge">EXE101</span>
-      <h1>Mario giải cứu công chúa</h1>
-      <p>Vượt qua 5 căn phòng câu hỏi về chủ nghĩa duy vật lịch sử để giải cứu công chúa.</p>
-      <label class="player-field" for="playerNameInput">
-        <span>Tên người chơi</span>
-        <input id="playerNameInput" type="text" maxlength="24" placeholder="Nhập tên của bạn">
-      </label>
-      <button id="startButton" type="button" class="start-button">Bắt đầu</button>
-      <section class="home-rank" aria-label="Bảng xếp hạng">
-        <h2>Bảng xếp hạng</h2>
+    <div class="home-card" id="homeCard">
+      <div id="startScreenContent">
+        <span class="home-badge">MLN111</span>
+        <h1>Mario giải cứu công chúa</h1>
+        <p>Vượt qua 5 căn phòng câu hỏi về chủ nghĩa duy vật lịch sử để giải cứu công chúa.</p>
+        <label class="player-field" for="playerNameInput">
+          <span>Tên người chơi</span>
+          <input id="playerNameInput" type="text" maxlength="24" placeholder="Nhập tên của bạn">
+        </label>
+        <div class="start-actions" style="display: flex; flex-direction: column; align-items: center; gap: 12px; max-width: 420px; margin: 0 auto;">
+          <button id="startButton" type="button" class="start-button" style="width: 100%;">Bắt đầu</button>
+          <button id="showRankButton" type="button" class="show-rank-btn" style="width: 100%;">Xem bảng xếp hạng</button>
+        </div>
+      </div>
+
+      <section class="home-rank hidden" id="homeRankSection" aria-label="Bảng xếp hạng">
+        <div class="rank-header">
+          <h2>Bảng xếp hạng</h2>
+          <div class="rank-actions">
+            <button id="closeRankButton" type="button" class="back-home-btn" title="Quay lại"><i class="fa-solid fa-house"></i></button>
+            <button id="resetRankButton" type="button" class="admin-reset">Admin reset</button>
+          </div>
+        </div>
         <table>
           <thead>
             <tr>
@@ -29,9 +43,6 @@
           </thead>
           <tbody id="homeRankBody"></tbody>
         </table>
-        <div class="rank-tools">
-          <button id="resetRankButton" type="button" class="admin-reset">Admin reset bảng</button>
-        </div>
       </section>
     </div>
   </section>
@@ -134,7 +145,7 @@
 
     <section class="quiz-panel" aria-label="Câu hỏi">
       <div class="topic-row">
-        <span>EXE101</span>
+        <span>MLN111</span>
         <span>Chủ nghĩa duy vật lịch sử</span>
       </div>
       <h1>Mario giải cứu công chúa</h1>

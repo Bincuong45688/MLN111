@@ -682,148 +682,17 @@
 
     <!-- 4. MARIO GAME SECTION -->
     <section id="section-mario" class="app-section">
-      <div class="mario-wrapper">
-        <!-- Start Screen inside Mario Section -->
-        <div class="mario-home-screen" id="homeScreen">
-          <div class="mario-home-card">
-            <span class="mario-badge">GAME TƯƠNG TÁC</span>
-            <h1>Mario giải cứu công chúa</h1>
-            <p>Vượt qua 5 căn phòng câu hỏi về Triết học & Chủ nghĩa duy vật lịch sử để giải cứu Công chúa Peach!</p>
-
-            <div class="mario-player-box">
-              <label for="playerNameInput">Tên người chơi:</label>
-              <input id="playerNameInput" type="text" maxlength="24" placeholder="Nhập tên của bạn...">
-            </div>
-
-            <button id="startButton" type="button" class="mario-start-btn">
-              <i class="fa-solid fa-play"></i> Bắt đầu chơi Mario
-            </button>
-
-            <!-- Leaderboard -->
-            <div class="mario-rank-box">
-              <h3><i class="fa-solid fa-trophy"></i> Bảng xếp hạng</h3>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Hạng</th>
-                    <th>Tên</th>
-                    <th>Thời gian</th>
-                  </tr>
-                </thead>
-                <tbody id="homeRankBody"></tbody>
-              </table>
-              <button id="resetRankButton" type="button" class="mario-reset-btn">Admin Reset Bảng</button>
-            </div>
-          </div>
+      <div class="mario-header-row">
+        <div class="mario-header-title">
+          <span class="mario-header-badge">MLN111 MINI GAME</span>
+          <h1>MARIO GIẢI CỨU CÔNG CHÚA</h1>
         </div>
-
-        <!-- Main Gameplay Shell -->
-        <main class="mario-game-shell hidden" id="marioGameShell">
-          <section class="mario-stage" id="stage">
-            <div class="mario-sky">
-              <div class="cloud cloud-one"></div>
-              <div class="cloud cloud-two"></div>
-              <div class="sun"></div>
-            </div>
-
-            <!-- HUD Header Bar -->
-            <div class="mario-hud">
-              <div>
-                <span class="hud-label">Phòng</span>
-                <strong id="roomText">1 / 5</strong>
-              </div>
-              <div>
-                <span class="hud-label">Câu hỏi</span>
-                <strong id="questionText">1 / 2</strong>
-              </div>
-              <div>
-                <span class="hud-label">Thời gian</span>
-                <strong id="timerText">0:00</strong>
-              </div>
-              <div>
-                <span class="hud-label">Mạng</span>
-                <strong id="livesText" class="lives">♥ ♥ ♥ ♥ ♥</strong>
-              </div>
-            </div>
-
-            <div class="level-track">
-              <div class="room-status">
-                <span id="roomProgressText">Phòng 1 · Câu 1</span>
-                <strong id="roomTimerText" class="room-time">0:00</strong>
-                <strong id="roomLivesText">♥ ♥ ♥ ♥ ♥</strong>
-              </div>
-              <div class="room-scene" id="roomScene">
-                <div class="scene-label" id="sceneLabel"></div>
-                <div class="scene-prop prop-one"></div>
-                <div class="scene-prop prop-two"></div>
-                <div class="scene-prop prop-three"></div>
-                <div class="scene-prop prop-four"></div>
-                <div class="scene-prop prop-five"></div>
-                <div class="scene-prop prop-six"></div>
-              </div>
-
-              <!-- Mario Sprite -->
-              <div class="mario" id="mario">
-                <img src="assets/mario.jpeg" alt="Mario">
-              </div>
-
-              <!-- Princess Peach Sprite -->
-              <div class="princess" id="princess">
-                <img src="assets/princess-peach.jpg" alt="Princess Peach">
-              </div>
-
-              <div class="bouquet" id="bouquet">
-                <span></span><span></span><span></span>
-              </div>
-              <div class="castle" id="castle">
-                <div class="tower tower-left"></div>
-                <div class="tower tower-right"></div>
-                <div class="castle-main"></div>
-                <div class="castle-door"></div>
-              </div>
-              <div class="fireworks" id="fireworks">
-                <span></span><span></span><span></span><span></span><span></span>
-              </div>
-            </div>
-
-            <div class="ground">
-              <span></span><span></span><span></span><span></span><span></span>
-            </div>
-          </section>
-
-          <!-- Mario Quiz Panel -->
-          <section class="mario-quiz-panel">
-            <div class="topic-row">
-              <span>TRIẾT HỌC MÁC - LÊNIN</span>
-              <span>PHÉP BIỆN CHỨNG & GIAI CẤP</span>
-            </div>
-            <h2 id="roomTitle" class="room-title">Phòng 1: Khái niệm Triết học</h2>
-            <h3 id="question">Đang tải câu hỏi...</h3>
-            <div id="answers" class="answers"></div>
-            <p id="feedback" class="feedback"></p>
-
-            <div class="mario-actions">
-              <button id="nextButton" type="button" class="btn btn-primary hidden">Tiếp tục <i
-                  class="fa-solid fa-forward"></i></button>
-              <button id="restartButton" type="button" class="btn btn-secondary">Thử lại <i
-                  class="fa-solid fa-rotate-left"></i></button>
-            </div>
-
-            <section class="mario-end-rank hidden" id="endRankPanel">
-              <h3><i class="fa-solid fa-trophy"></i> Bảng xếp hạng kết quả</h3>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Hạng</th>
-                    <th>Tên</th>
-                    <th>Thời gian</th>
-                  </tr>
-                </thead>
-                <tbody id="endRankBody"></tbody>
-              </table>
-            </section>
-          </section>
-        </main>
+        <button id="marioFullscreenBtn" class="mario-fullscreen-btn">
+          MỞ TOÀN MÀN HÌNH
+        </button>
+      </div>
+      <div class="mario-iframe-container">
+        <iframe id="marioIframe" src="Mario_Game_Standalone/Mario_Game_Standalone/index.html" class="mario-iframe" title="Mario Game Quiz"></iframe>
       </div>
     </section>
 
