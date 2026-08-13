@@ -209,6 +209,9 @@ function initSlidePresentation() {
   function goToSlide(slideNum) {
     if (slideNum < 1 || slideNum > totalSlides) return;
 
+    // Determine transition direction before updating currentSlide
+    const direction = slideNum >= currentSlide ? 'anim-next' : 'anim-prev';
+
     currentSlide = slideNum;
     const formattedNum = String(currentSlide).padStart(2, '0');
 
@@ -216,12 +219,14 @@ function initSlidePresentation() {
     if (currentSlideNumEl) currentSlideNumEl.textContent = formattedNum;
     if (slideAccentNumEl) slideAccentNumEl.textContent = formattedNum;
 
-    // Toggle Active Slide Page
+    // Toggle Active Slide Page (with direction-aware animation)
     slidePages.forEach(page => {
       if (parseInt(page.dataset.slide) === currentSlide) {
-        page.classList.add('active');
+        page.classList.remove('anim-next', 'anim-prev');
+        void page.offsetWidth; // force reflow so the animation restarts
+        page.classList.add('active', direction);
       } else {
-        page.classList.remove('active');
+        page.classList.remove('active', 'anim-next', 'anim-prev');
       }
     });
 
@@ -229,6 +234,17 @@ function initSlidePresentation() {
     thumbBtns.forEach(btn => {
       if (parseInt(btn.dataset.slide) === currentSlide) {
         btn.classList.add('active');
+        // Auto-scroll the thumbnail bar so the active item is centered
+        const bar = btn.parentElement;
+        if (bar) {
+          const barRect = bar.getBoundingClientRect();
+          const btnRect = btn.getBoundingClientRect();
+          const maxScroll = bar.scrollWidth - bar.clientWidth;
+          let target = bar.scrollLeft + (btnRect.left - barRect.left)
+            - (bar.clientWidth / 2) + (btnRect.width / 2);
+          target = Math.max(0, Math.min(target, maxScroll));
+          bar.scrollLeft = target;
+        }
       } else {
         btn.classList.remove('active');
       }
@@ -282,7 +298,7 @@ function initSlidePresentation() {
     const slideSection = document.getElementById('section-slide');
     const isSlideTabActive = slideSection && slideSection.classList.contains('active');
 
-    if (!isFullscreenActive && !isSlideTabActive) return;
+    if (!isFullscreenActive && !isSlideTabActive && !document.fullscreenElement) return;
 
     if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
       if (currentSlide > 1) goToSlide(currentSlide - 1);
@@ -295,7 +311,7 @@ function initSlidePresentation() {
     }
   });
 
-  // Listen for browser native escape exit fullscreen
+  // Listen for browser native fullscreen exit
   document.addEventListener('fullscreenchange', () => {
     if (!document.fullscreenElement && overlay && overlay.classList.contains('active')) {
       overlay.classList.remove('active');
@@ -303,6 +319,7 @@ function initSlidePresentation() {
     }
   });
 }
+
 
 /* ==========================================================================
    4. LÔ TÔ MINI GAME SYSTEM (KỊCH BẢN PHÂN LOẠI TÌNH HUỐNG)
