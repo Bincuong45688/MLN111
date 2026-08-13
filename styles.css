@@ -2014,25 +2014,31 @@ html, body {
 .pres-content {
   flex: 1;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
-  padding: 24px;
+  padding: 20px 32px;
   position: relative;
-  overflow: auto;
+  overflow: hidden;
 }
 
 .pres-slide-card {
   background: #ffffff;
   border-radius: 20px;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
-  width: 92%;
-  max-width: 1200px;
-  max-height: 82vh;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 1280px;
+  /* Fixed frame — same size for all slides */
+  height: 100%;
   overflow-y: auto;
-  padding: 48px 56px;
+  overflow-x: hidden;
+  padding: 48px 64px;
   color: var(--text-dark);
   animation: presSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   position: relative;
+  /* Vertically center content when slide has little content */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 @keyframes presSlideIn {
