@@ -1,136 +1,134 @@
 const rooms = [
   {
-    title: "Phòng 1: Khái niệm & Biện chứng",
+    title: "Phòng 1: Nhận thức Biện chứng",
     questions: [
       {
-        text: "Phương pháp tư duy biện chứng nhìn nhận sự vật trong trạng thái nào?",
+        text: "Một sinh viên đi học trễ 20 phút. Sau khi biết thêm rằng hôm đó trời mưa lớn, xe buýt thay đổi lịch trình và bạn ấy đã xuất phát sớm, cách đánh giá nào phù hợp nhất với cách nhìn biện chứng?",
         answers: [
-          "Trong mối liên hệ phổ biến, vận động và phát triển không ngừng",
-          "Cô lập, tĩnh tại và không bao giờ thay đổi",
-          "Chỉ tồn tại trong ý nghĩ, không có thực",
-          "Tùy thuộc hoàn toàn vào may mắn"
+          "Không thể đánh giá hành vi đi trễ vì mọi nguyên nhân đều có thể được chấp nhận",
+          "Vẫn kết luận sinh viên thiếu ý thức vì kết quả cuối cùng là đi học trễ",
+          "Xem xét việc đi trễ trong các mối liên hệ cụ thể và quá trình dẫn đến nó, đồng thời không phủ nhận trách nhiệm cá nhân nếu có",
+          "Chỉ cần xác định một nguyên nhân quan trọng nhất rồi bỏ qua các yếu tố còn lại"
         ],
-        correct: 0,
-        explain: "Tư duy biện chứng xem xét sự vật trong mối liên hệ, vận động và biến đổi khách quan."
+        correct: 2,
+        explain: "Cách nhìn biện chứng yêu cầu xem xét sự vật trong mối liên hệ, sự tác động và quá trình vận động, biến đổi, không đồng nghĩa với biện minh vô điều kiện."
       },
       {
-        text: "Biện chứng chủ quan là gì?",
+        text: "Trong tình huống cây bị héo, phát biểu nào dưới đây thể hiện đầy đủ nhất điều mà cách nhìn biện chứng yêu cầu?",
         answers: [
-          "Là biện chứng của tư duy con người, phản ánh biện chứng khách quan",
-          "Là sự biến đổi của thời tiết và vũ trụ",
-          "Là các quy luật vật lý tự nhiên",
-          "Là suy nghĩ ngẫu nhiên không có quy luật"
+          "Cây héo có thể do nhiều nguyên nhân khác nhau nên không thể xác định nguyên nhân nào",
+          "Cần quan sát thêm các yếu tố như nước, đất, rễ, ánh sáng, nhiệt độ và xem xét quá trình thay đổi theo thời gian",
+          "Chỉ cần kiểm tra đất đang khô hay ướt vì nước là yếu tố trực tiếp nhất",
+          "Không nên đưa ra bất kỳ kết luận nào vì mọi sự vật đều thay đổi liên tục"
         ],
-        correct: 0,
-        explain: "Biện chứng chủ quan là tư duy, khái niệm được phản ánh vào bộ óc con người."
+        correct: 1,
+        explain: "Điểm cốt lõi của biện chứng là xem xét sự vật trong mạng lưới các mối liên hệ và quá trình vận động, biến đổi tự thân của nó."
       }
     ]
   },
   {
-    title: "Phòng 2: Phép biện chứng duy vật",
+    title: "Phòng 2: Biện chứng Khách quan trong thực tế",
     questions: [
       {
-        text: "Phép biện chứng duy vật do ai sáng lập và phát triển?",
+        text: "Một doanh nghiệp thấy doanh số giảm 3 tháng liên tiếp và lập tức kết luận 'nhân viên bán hàng kém hiệu quả'. Cách xử lý nào phù hợp nhất với cách nhìn biện chứng?",
         answers: [
-          "K. Mác, Ph. Ăng-ghen và V.I. Lênin",
-          "Socrates và Plato",
-          "Newton và Einstein",
-          "Adam Smith"
+          "Giữ nguyên kết luận vì doanh số giảm là kết quả trực tiếp của hoạt động bán hàng",
+          "Chỉ đánh giá lại năng lực của đội ngũ bán hàng vì đây là yếu tố nội bộ dễ kiểm soát",
+          "Xem xét đồng thời các yếu tố nhu cầu thị trường, giá cả, đối thủ, chất lượng sản phẩm và sự biến động của chúng trước khi kết luận",
+          "Không nên đưa ra bất kỳ kết luận nào vì doanh số chịu ảnh hưởng của quá nhiều yếu tố"
         ],
-        correct: 0,
-        explain: "Phép biện chứng duy vật do Mác & Ăng-ghen sáng lập, Lênin phát triển."
+        correct: 2,
+        explain: "Tư duy biện chứng đòi hỏi đánh giá sự vật toàn diện qua các mối liên hệ tác động lẫn nhau chứ không nhìn phiến diện một khía cạnh lẻ tẻ."
       },
       {
-        text: "Nguyên lý nào là cột trụ của phép biện chứng duy vật?",
+        text: "Hiện tượng sạt lở đất xảy ra do sự kết hợp của mưa lớn kéo dài, địa hình dốc và thảm thực vật bị chặt phá. Đây là biểu hiện của loại biện chứng nào?",
         answers: [
-          "Nguyên lý về mối liên hệ phổ biến và Nguyên lý về sự phát triển",
-          "Nguyên lý bảo toàn năng lượng",
-          "Nguyên lý bất biến của vũ trụ",
-          "Nguyên lý ngẫu nhiên"
+          "Biện chứng chủ quan",
+          "Biện chứng khách quan",
+          "Cả biện chứng khách quan và chủ quan",
+          "Sự tĩnh tại của tự nhiên"
         ],
-        correct: 0,
-        explain: "Hai nguyên lý cơ bản nhất là mối liên hệ phổ biến và sự phát triển."
+        correct: 1,
+        explain: "Sạt lở đất là sự vận động, tác động qua lại của các yếu tố vật lý tự nhiên bên ngoài độc lập với ý thức con người, nên thuộc biện chứng khách quan."
       }
     ]
   },
   {
-    title: "Phòng 3: Khái niệm Giai cấp",
+    title: "Phòng 3: Sự chuyển hóa giữa Khách quan & Chủ quan",
     questions: [
       {
-        text: "Theo V.I. Lênin, giai cấp được định nghĩa chủ yếu dựa vào yếu tố nào?",
+        text: "Một sinh viên đi học muộn. Bạn thay đổi đánh giá từ 'lười biếng ngủ nướng' sang 'thông cảm' sau khi biết đường bị ngập sâu và kẹt xe. Sự chuyển biến suy nghĩ này thuộc về:",
         answers: [
-          "Vị trí và quan hệ sở hữu tư liệu sản xuất trong xã hội",
-          "Sở thích và phong cách thời trang",
-          "Độ tuổi và giới tính",
-          "Sự nổi tiếng trên truyền thông"
+          "Biện chứng khách quan",
+          "Biện chứng chủ quan",
+          "Cả biện chứng khách quan và chủ quan",
+          "Không thuộc loại biện chứng nào"
         ],
-        correct: 0,
-        explain: "Giai cấp gắn với vị trí trong hệ thống sản xuất và sở hữu tư liệu sản xuất."
+        correct: 1,
+        explain: "Mưa ngập đường là hiện tượng khách quan, nhưng sự chuyển biến nhận thức trong não bộ của bạn để phản ánh hiện thực đó chính là biện chứng chủ quan."
       },
       {
-        text: "Nguồn gốc sâu xa dẫn đến sự ra đời của giai cấp là gì?",
+        text: "Xét 2 hiện tượng: (1) App xe công nghệ tự tăng giá do trời mưa ngập thiếu tài xế. (2) Người dùng nhận ra tăng giá là hợp lý nên quyết định chờ tạnh mưa. Chúng tương ứng với:",
         answers: [
-          "Lực lượng sản xuất phát triển tạo của cải dư thừa và xuất hiện chế độ tư hữu",
-          "Do con người thích chia rẽ nhau",
-          "Do thiên tai bão lũ",
-          "Do chiếu chỉ của nhà vua"
+          "(1) Biện chứng chủ quan – (2) Biện chứng khách quan",
+          "Cả (1) và (2) đều là Biện chứng khách quan",
+          "(1) Biện chứng khách quan – (2) Biện chứng chủ quan",
+          "Cả (1) và (2) đều là Biện chứng chủ quan"
         ],
-        correct: 0,
-        explain: "Sự ra đời của chế độ tư hữu về tư liệu sản xuất là nguồn gốc trực tiếp hình thành giai cấp."
+        correct: 2,
+        explain: "Sự thay đổi giá cước ngoài thực tế (1) là biện chứng khách quan. Sự nhận thức và ra quyết định trong suy nghĩ người dùng (2) là biện chứng chủ quan."
       }
     ]
   },
   {
-    title: "Phòng 4: Kết cấu Xã hội – Giai cấp",
+    title: "Phòng 4: Đặc trưng của Phép biện chứng Duy vật",
     questions: [
       {
-        text: "Giai cấp nào sau đây là giai cấp cơ bản trong xã hội tư bản?",
+        text: "Chốt lại, điểm khác biệt cốt lõi nhất giữa biện chứng khách quan (BCKQ) và biện chứng chủ quan (BCCQ) là gì?",
         answers: [
-          "Tư sản và Vô sản",
-          "Chủ nô và Nô lệ",
-          "Địa chủ và Nông dân",
-          "Thợ thủ công nhỏ"
+          "BCKQ tồn tại trong tư duy, BCCQ tồn tại ngoài thực tế",
+          "BCKQ luôn luôn đúng, BCCQ đôi khi bị sai lệch",
+          "BCCQ quyết định sự tồn tại của BCKQ",
+          "BCKQ độc lập với ý thức con người, BCCQ là sự phản ánh BCKQ đó vào trong tư duy"
         ],
-        correct: 0,
-        explain: "Trong xã hội tư bản, Tư sản và Vô sản là 2 giai cấp cơ bản."
+        correct: 3,
+        explain: "Biện chứng khách quan là hiện thực bên ngoài độc lập với ta. Biện chứng chủ quan là tư duy phản chiếu hiện thực đó trong đầu óc."
       },
       {
-        text: "Tầng lớp nào đóng vai trò trung gian trong kết cấu xã hội?",
+        text: "Phép biện chứng duy vật là sự thống nhất hữu cơ giữa thế giới quan duy vật và phương pháp luận biện chứng.",
         answers: [
-          "Trí thức, giới tu hành và nhóm nghề nghiệp đặc thù",
-          "Giai cấp thống trị",
-          "Giai cấp nô lệ",
-          "Các hoàng tộc cổ đại"
+          "Đúng",
+          "Sai"
         ],
         correct: 0,
-        explain: "Trí thức là tầng lớp xã hội trung gian có vai trò quan trọng trong đời sống văn hóa tinh thần."
+        explain: "Đặc điểm nổi bật của phép biện chứng duy vật là sự kết hợp khăng khít giữa thế giới quan duy vật khoa học và phương pháp luận biện chứng."
       }
     ]
   },
   {
-    title: "Phòng 5: Đấu tranh Giai cấp & Giải cứu",
+    title: "Phòng 5: Học thuyết biện chứng kinh điển",
     questions: [
       {
-        text: "Đấu tranh giai cấp giữ vai trò gì đối với sự phát triển của xã hội có giai cấp?",
+        text: "Theo V.I. Lênin, 'hạt nhân' của phép biện chứng là học thuyết về:",
         answers: [
-          "Là động lực trực tiếp của sự phát triển xã hội",
-          "Là nguyên nhân gây kìm hãm xã hội",
-          "Không có ảnh hưởng gì",
-          "Chỉ xảy ra trong quá khứ"
+          "Sự vận động của vật chất",
+          "Mối liên hệ phổ biến",
+          "Sự thống nhất của các mặt đối lập",
+          "Sự phát triển của tư duy"
         ],
-        correct: 0,
-        explain: "Đấu tranh giai cấp thúc đẩy thay đổi hình thái kinh tế - xã hội lên nấc thang cao hơn."
+        correct: 2,
+        explain: "Lênin khẳng định hạt nhân của phép biện chứng chính là học thuyết về sự thống nhất và đấu tranh của các mặt đối lập."
       },
       {
-        text: "Trong xã hội số hiện đại, bất bình đẳng giai cấp thể hiện qua khía cạnh nào?",
+        text: "Điền từ vào ô trống: 'Phép biện chứng là khoa học về những quy luật phổ biến của sự vận động và sự __________ của tự nhiên, xã hội và tư duy.' (Ph. Ăng-ghen)",
         answers: [
-          "Sở hữu dữ liệu, tri thức, hạ tầng công nghệ và kỹ năng số",
-          "Chỉ là việc ai mua máy tính đắt hơn",
-          "Không còn bất bình đẳng nào",
-          "Chỉ ở điểm số trò chơi"
+          "tư duy",
+          "phát triển",
+          "đa dạng",
+          "lặp lại"
         ],
-        correct: 0,
-        explain: "Xã hội số tạo ra khoảng cách tiếp cận công nghệ và quyền kiểm soát dữ liệu tri thức."
+        correct: 1,
+        explain: "Ăng-ghen định nghĩa phép biện chứng là khoa học về những quy luật phổ biến của sự vận động và sự phát triển của tự nhiên, xã hội và tư duy."
       }
     ]
   }
