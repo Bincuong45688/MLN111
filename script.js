@@ -446,7 +446,95 @@ window.checkLotoAnswer = function(selectedType) {
 };
 
 /* ==========================================================================
-   5. MARIO GAME STANDALONE INTEGRATION ENGINE
+   5. SLIDE 09: PROGRESSIVE REVEAL HANDLER FOR DEVELOPMENT PRINCIPLES
+   ========================================================================== */
+function initProgressiveReveal() {
+  let slide9RevealLevel = 0;
+  const MAX_REVEALS = 7;
+  
+  // Monitor when slide 9 becomes active
+  const observer = new MutationObserver(() => {
+    const slide9 = document.querySelector('.slide-page[data-slide="9"]');
+    if (slide9 && slide9.classList.contains('active')) {
+      // Slide 9 is now visible
+      if (slide9RevealLevel === 0) {
+        // Initialize reveal on first view
+        updateSlide9Reveals(0);
+      }
+    }
+  });
+  
+  // Observe changes to slide pages
+  const slideDeck = document.querySelector('.slide-body');
+  if (slideDeck) {
+    observer.observe(slideDeck, { subtree: true, attributes: true });
+  }
+  
+  function updateSlide9Reveals(level) {
+    const slide9 = document.querySelector('.slide-page[data-slide="9"]');
+    if (!slide9) return;
+    
+    // Update all elements with data-reveal attribute
+    const revealElements = slide9.querySelectorAll('[data-reveal]');
+    revealElements.forEach(el => {
+      const revealValue = parseInt(el.dataset.reveal) || 0;
+      if (revealValue <= level) {
+        el.style.opacity = '1';
+        el.style.pointerEvents = 'auto';
+      } else {
+        el.style.opacity = '0';
+        el.style.pointerEvents = 'none';
+      }
+    });
+    
+    slide9RevealLevel = level;
+  }
+  
+  // Add click listener for progressive reveal
+  document.addEventListener('click', (e) => {
+    const slide9 = document.querySelector('.slide-page[data-slide="9"]');
+    if (!slide9 || !slide9.classList.contains('active')) return;
+    
+    // Check if click is within slide 9 content (not on navigation buttons)
+    const isNavButton = e.target.closest('.slide-btn') || 
+                       e.target.closest('.thumb-btn') ||
+                       e.target.closest('.nav-tab');
+    if (isNavButton) return;
+    
+    // Increment reveal level
+    if (slide9RevealLevel < MAX_REVEALS) {
+      updateSlide9Reveals(slide9RevealLevel + 1);
+    }
+  });
+  
+  // Add keyboard support for progressive reveal
+  document.addEventListener('keydown', (e) => {
+    const slide9 = document.querySelector('.slide-page[data-slide="9"]');
+    if (!slide9 || !slide9.classList.contains('active')) return;
+    
+    // Spacebar to reveal
+    if (e.code === 'Space' || e.key === ' ') {
+      e.preventDefault();
+      if (slide9RevealLevel < MAX_REVEALS) {
+        updateSlide9Reveals(slide9RevealLevel + 1);
+      }
+    }
+  });
+  
+  // Reset reveal level when leaving slide 9
+  const originalGoToSlide = window.goToSlide;
+  if (originalGoToSlide) {
+    window.goToSlide = function(slideNum) {
+      if (slideNum !== 9) {
+        slide9RevealLevel = 0;
+      }
+      return originalGoToSlide.call(this, slideNum);
+    };
+  }
+}
+
+/* ==========================================================================
+   6. MARIO GAME STANDALONE INTEGRATION ENGINE
    ========================================================================== */
 function initMarioGame() {
   console.log("Mario Game is running independently inside the embedded iframe.");
