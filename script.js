@@ -129,6 +129,21 @@ function initSlidePresentation() {
   const presNextBtn = document.getElementById('presNextBtn');
   const presThumbStrip = document.getElementById('presThumbStrip');
 
+  function resetLateCase(slide) {
+    if (!slide) return;
+    slide.classList.remove('show-details');
+  }
+
+  document.addEventListener('click', (event) => {
+    const revealButton = event.target.closest('[data-late-reveal]');
+    if (revealButton) {
+      const slide = revealButton.closest('.late-case-slide');
+      if (!slide) return;
+      slide.classList.add('show-details');
+      revealButton.hidden = true;
+    }
+  });
+
   if (presTotalNum) presTotalNum.textContent = String(totalSlides).padStart(2, '0');
 
   // Build Dot Strip for Fullscreen Overlay
@@ -153,6 +168,9 @@ function initSlidePresentation() {
       presContent.innerHTML = '';
       const card = document.createElement('div');
       card.className = 'pres-slide-card';
+      if (activePage.classList.contains('late-case-slide')) {
+        card.classList.add('late-case-slide');
+      }
       card.innerHTML = activePage.innerHTML;
       presContent.appendChild(card);
 
@@ -229,6 +247,8 @@ function initSlidePresentation() {
         page.classList.remove('active', 'anim-next', 'anim-prev');
       }
     });
+
+    resetLateCase(document.querySelector('.slide-page.active.late-case-slide'));
 
     // Toggle Active Thumbnail
     thumbBtns.forEach(btn => {
